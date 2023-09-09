@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<style>
+    .row {
+      display: flex;
+    }
+    
+    .column {
+      flex: 33.33%;
+      padding: 5px;
+    }
+</style>
+    
+    <h2>Your History</h2>
+    <h3>Public</h3>
+    <div class="container">
+        <br>
+        {% for i in range(0, public_imgs |length, 3) %}
+            <div class="row">
+
+                {% if i < public_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=public_imgs[i].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=public_imgs[i].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+1 < public_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=public_imgs[i+1].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=public_imgs[i+1].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+2 < public_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=public_imgs[i+2].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=public_imgs[i+2].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    
+    <h3>Private</h3>
+    <div class="container">
+        <br>
+        {% for i in range(0, private_imgs |length, 3) %}
+            <div class="row">
+
+                {% if i < private_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=private_imgs[i].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=private_imgs[i].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+1 < private_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=private_imgs[i+1].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=private_imgs[i+1].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+2 < private_imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=private_imgs[i+2].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=private_imgs[i+2].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+        {% endfor %}
+        <br>
+    </div>
+
+{% endblock %}

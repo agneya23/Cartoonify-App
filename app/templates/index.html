@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    {% if remaining_credits == 0 %}
+        <p>Sorry! You are all out of credits. Your credits will be renewed by {{ date }}.</p>
+    {% elif current_user.is_authenticated %}
+        <div class="container">
+            <h2>Hi, {{ current_user.username }}!</h2>
+            <h4>{{ remaining_credits }} credits remaining.</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ wtf.quick_form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container"></div>
+            <h2>Welcome!</h2>
+            <h2>Cartoonify your images with AI!</h2>
+            <br>
+            <img src="{{url_for('static', filename='example/_112921315_gettyimages-876284806-input.jpg')}}" alt="" width="400" height="300">
+            &rarr;
+            <img src="{{url_for('static', filename='example/_112921315_gettyimages-876284806-output.jpg')}}" alt="" width="400" height="300">
+        </div>
+    {% endif %}
+
+{% endblock %}

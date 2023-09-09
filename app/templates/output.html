@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h4>{{ remaining_credits }} credits remaining</h4>
+        <p>
+            Generated Image:
+            <br>
+            <img src="{{url_for('static', filename=path)}}" alt="" width="400" height="300">
+        </p>
+        <a href="{{url_for('download', filename=path)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+    </div>
+{% endblock %}

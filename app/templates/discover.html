@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<style>
+    .row {
+      display: flex;
+    }
+    
+    .column {
+      flex: 33.33%;
+      padding: 5px;
+    }
+</style>
+
+    <h2>See what other people have been upto!</h2>
+    <br>
+    <div class="container">
+        <br>
+        {% for i in range(0, imgs |length, 3) %}
+            <div class="row">
+
+                {% if i < imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=imgs[i].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=imgs[i].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+1 < imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=imgs[i+1].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=imgs[i+1].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+                {% if i+2 < imgs |length %}
+                <div class="column" style="width: 330px; height: 288.5px;">
+                    <img src="{{url_for('static', filename=imgs[i+2].url)}}" alt="" width="325" height="255">
+                    <br>
+                    <a href="{{url_for('download', filename=imgs[i+2].url)}}" target="blank"><button class='btn btn-default'>Download</button></a>
+                </div>
+                {% endif %}
+
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+<!-- .parent { position: relative; }
+.child { position: absolute; bottom: 0; right:0; } -->
